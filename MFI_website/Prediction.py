@@ -1,10 +1,12 @@
 import streamlit as st
 import pandas as pd
 from catboost import CatBoostClassifier, Pool
+import os
 
-# Load trained model
+# Load trained model safely (works locally + Streamlit Cloud)
 model = CatBoostClassifier()
-model.load_model("catboost_model.cbm")
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "catboost_model.cbm")
+model.load_model(model_path)
 
 # Feature list used during training
 FEATURES = [
@@ -19,6 +21,7 @@ FEATURES = [
 ]
 
 CAT_FEATURES = ["pcircle"]
+
 
 def predict_loan(monthly_income, loan_amount):
     if loan_amount > (10 * monthly_income):
@@ -70,6 +73,7 @@ def predict_loan(monthly_income, loan_amount):
 
     return prob, decision
 
+
 def app():
     st.markdown("<h1 style='color:#4A6EE0;'>🔮 Loan Repayment Prediction</h1>", unsafe_allow_html=True)
     st.markdown("<p style='color:#444; font-size:17px;'>Enter the loan details below to check borrower repayment probability.</p>", unsafe_allow_html=True)
@@ -77,7 +81,7 @@ def app():
     loan_amount = st.number_input("💵 Loan Amount", min_value=0.0, step=100.0)
     monthly_income = st.number_input("📈 Monthly Income", min_value=0.0, step=100.0)
 
-    # Modernized Predict button
+    # Modern Predict button styling
     button_html = """
     <style>
     .stButton>button {
