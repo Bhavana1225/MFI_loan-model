@@ -8,7 +8,6 @@ model = CatBoostClassifier()
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "catboost_model.cbm")
 model.load_model(model_path)
 
-# Feature list used during training
 FEATURES = [
     "msisdn", "aon", "daily_decr30", "daily_decr90", "rental30", "rental90",
     "last_rech_date_ma", "last_rech_date_da", "last_rech_amt_ma", "cnt_ma_rech30",
@@ -21,7 +20,6 @@ FEATURES = [
 ]
 
 CAT_FEATURES = ["pcircle"]
-
 
 def predict_loan(monthly_income, loan_amount):
     if loan_amount > (10 * monthly_income):
@@ -73,7 +71,6 @@ def predict_loan(monthly_income, loan_amount):
 
     return prob, decision
 
-
 def app():
     st.markdown("<h1 style='color:#4A6EE0;'>🔮 Loan Repayment Prediction</h1>", unsafe_allow_html=True)
     st.markdown("<p style='color:#444; font-size:17px;'>Enter the loan details below to check borrower repayment probability.</p>", unsafe_allow_html=True)
@@ -90,7 +87,8 @@ def app():
         font-size:16px;
         border-radius:10px;
         padding:8px 20px;
-        width:120px;
+        width:100%;
+        max-width:200px;
     }
     .stButton>button:hover {
         background-color: #3B57B1;
