@@ -1,8 +1,8 @@
 import streamlit as st
 
 def app():
-    st.markdown("<h1 style='color:#4A6EE0;'>ℹ️ About This Project</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='font-size:17px; color:#444;'>This project helps microfinance institutions estimate loan repayment likelihood using borrower telecom and behavioral indicators.</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color:#4A6EE0;'>ℹ️ About This App</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size:17px; color:#444;'>This model helps microfinance institutions estimate loan repayment likelihood using borrower telecom and behavioral indicators.</p>", unsafe_allow_html=True)
 
     st.markdown("""
         <div style='background:#F3E5F5; padding:15px; border-radius:12px; max-width:100%;'>

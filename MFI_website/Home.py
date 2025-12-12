@@ -2,7 +2,7 @@ import streamlit as st
 
 def app():
     st.markdown("""
-        <h1 style='text-align:center; color:#4A6EE0;'>💰 Microfinance Loan Project</h1>
+        <h1 style='text-align:center; color:#4A6EE0;'>💰 Microfinance Loan prediction</h1>
         <p style='text-align:center; font-size:18px; color:#444;'>
             Predict loan repayment probabilities quickly and efficiently.
         </p>
