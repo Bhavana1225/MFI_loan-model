@@ -1,6 +1,6 @@
-PyPDF2
 streamlit
 pandas
-catboost
+numpy
+PyPDF2
 reportlab
-math   # actually part of Python, no need
+catboost
