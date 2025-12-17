@@ -1,5 +1,6 @@
+PyPDF2
 streamlit
 pandas
-numpy
-scikit-learn
 catboost
+reportlab
+math   # actually part of Python, no need
