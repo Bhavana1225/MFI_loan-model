@@ -1,41 +1,99 @@
 import streamlit as st
 
 def app():
+    # ==============================
+    # HERO SECTION (LIGHT & PROFESSIONAL)
+    # ==============================
     st.markdown("""
-        <h1 style='text-align:center; color:#4A6EE0;'>💰 Microfinance Loan prediction</h1>
-        <p style='text-align:center; font-size:18px; color:#444;'>
-            Predict loan repayment probabilities quickly and efficiently.
-        </p>
-        <br>
+        <div style="
+            background: linear-gradient(135deg, #B0C4DE, #E3F2FD);
+            padding: 50px 20px;
+            border-radius: 20px;
+            color: #2C3E50;
+            text-align: center;
+        ">
+            <h1 style="font-size:38px; margin-bottom:10px; font-weight:600;">
+                Smart Microfinance Loan Assessment
+            </h1>
+            <p style="font-size:18px; max-width:700px; margin:auto;">
+                Evaluate borrower risk, calculate EMI feasibility, and predict loan repayment
+                — all in one intelligent platform.
+            </p>
+        </div>
     """, unsafe_allow_html=True)
 
-    # Responsive columns: stack on small screens
-    col1, col2, col3 = st.columns([1,1,1], gap="small")
+    st.write("")
+    st.write("")
 
-    with col1:
-        st.markdown("""
-            <div style='background:#E3F2FD; padding:20px; border-radius:12px; text-align:center; max-width:100%;'>
-                <h2>📊 Prediction</h2>
-                <p>Check whether a borrower is likely to repay a loan.</p>
-            </div>
-        """, unsafe_allow_html=True)
+    # ==============================
+    # HOW IT WORKS (STEP FLOW)
+    # ==============================
+    st.markdown("<h2 style='text-align:center; color:#2C3E50;'>How It Works</h2>", unsafe_allow_html=True)
+    st.write("")
 
-    with col2:
-        st.markdown("""
-            <div style='background:#FFF3E0; padding:20px; border-radius:12px; text-align:center; max-width:100%;'>
-                <h2>📁 Data Insights</h2>
-                <p>Uses borrower behavioral and telecom data for analysis.</p>
-            </div>
-        """, unsafe_allow_html=True)
+    col1, col2, col3, col4 = st.columns(4)
 
-    with col3:
-        st.markdown("""
-            <div style='background:#E8F5E9; padding:20px; border-radius:12px; text-align:center; max-width:100%;'>
-                <h2>📖 Overview</h2>
-                <p>Helps microfinance teams make informed lending decisions.</p>
-            </div>
-        """, unsafe_allow_html=True)
+    steps = [
+        ("📝", "Apply", "Submit borrower and loan details securely."),
+        ("📂", "Verify", "Upload and verify borrower documents."),
+        ("💰", "Calculate", "Analyze EMI feasibility based on income."),
+        ("📊", "Predict", "Assess repayment probability instantly.")
+    ]
+
+    for col, (icon, title, desc) in zip([col1, col2, col3, col4], steps):
+        with col:
+            st.markdown(f"""
+                <div style="text-align:center; padding:10px;">
+                    <h1 style="font-size:36px;">{icon}</h1>
+                    <h4 style="margin-bottom:5px;">{title}</h4>
+                    <p style="font-size:14px; color:#555;">{desc}</p>
+                </div>
+            """, unsafe_allow_html=True)
 
     st.write("")
     st.write("")
-    st.markdown("<h3 style='text-align:center;'>Discover what the app can do 💡</h3>", unsafe_allow_html=True)
+
+    # ==============================
+    # TRUST / VALUE STRIP
+    # ==============================
+    st.markdown("""
+        <div style="
+            background:#F4F6F9;
+            padding:25px;
+            border-radius:15px;
+            display:flex;
+            justify-content:space-around;
+            text-align:center;
+            flex-wrap: wrap;
+        ">
+            <div style='margin:10px; min-width:90px;'>
+                <h2>⚡</h2>
+                <p style='margin:0; font-size:14px;'>Fast Decisions</p>
+            </div>
+            <div style='margin:10px; min-width:90px;'>
+                <h2>🔐</h2>
+                <p style='margin:0; font-size:14px;'>Secure Data</p>
+            </div>
+            <div style='margin:10px; min-width:90px;'>
+                <h2>📈</h2>
+                <p style='margin:0; font-size:14px;'>Data-Driven</p>
+            </div>
+            <div style='margin:10px; min-width:90px;'>
+                <h2>🏦</h2>
+                <p style='margin:0; font-size:14px;'>Microfinance Ready</p>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.write("")
+    st.write("")
+
+    # ==============================
+    # PRIMARY CTA
+    # ==============================
+    col_cta = st.columns([1, 2, 1])[1]
+
+    with col_cta:
+        if st.button("🚀 Apply for Loan"):
+            st.session_state.page = "Login"
+            st.rerun()
